@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 
+  id: 1
   preferred: false
   nlm_id: MyString
   abbrv: MyString
@@ -12,7 +12,7 @@ one:
   end_year: 1
 
 two:
-  id: 
+  id: 2
   preferred: false
   nlm_id: MyString
   abbrv: MyString

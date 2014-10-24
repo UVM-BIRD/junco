@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  source_journal_id: 
-  verb_id: 
-  target_journal_id: 
-
-two:
-  source_journal_id: 
-  verb_id: 
-  target_journal_id: 
+  source_journal_id: 1
+  verb_id: 1
+  target_journal_id: 2

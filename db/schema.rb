@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 20141024184229) do
   end
 
   create_table "verbs", force: true do |t|
-    t.string   "desc",       limit: 50, null: false
+    t.string   "name",       limit: 50,  null: false
+    t.string   "rdaw_id",    limit: 10,  null: false
+    t.string   "desc",       limit: 250, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

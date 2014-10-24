@@ -1,3 +1,3 @@
 class Verb < ActiveRecord::Base
-  attr_accessible :desc
+  attr_accessor :name, :rdaw_id, :desc
 end
