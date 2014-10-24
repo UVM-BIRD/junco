@@ -1,0 +1,4 @@
+"is absorbed by (work)" (rdaw:P10145): Relates a work to a work that incorporates another work. [http://www.rdaregistry.info/Elements/w/#P10145]
+"is absorbed in part by (work)" (rdaw:P10146): Relates a work to a work that incorporates part of the content of another work. [http://www.rdaregistry.info/Elements/w/#P10146]
+"is continued by (work)" (rdaw:P10191): Relates a work to a work whose content continues an earlier work. [http://www.rdaregistry.info/Elements/w/#P10191]
+"is continued in part by (work)" (rdaw:P10104): Relates a work to a work part of whose content separated from an earlier work to form a new work. [http://www.rdaregistry.info/Elements/w/#P10104]
