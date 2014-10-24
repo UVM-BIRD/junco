@@ -5,19 +5,37 @@
 # gem 'activerecord-jdbcsqlite3-adapter'
 #
 default: &default
-  adapter: sqlite3
+  adapter: jdbcmysql
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  host: localhost
+  database: junco_dev
+  username: junco
+  password: junco
+  encoding: utf8
+  reconnect: false
+  pool: 5
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  host: localhost
+  database: junco_test
+  username: junco
+  password: junco
+  encoding: utf8
+  reconnect: false
+  pool: 5
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  host: webdb-large1.uvm.edu
+  database: cctsi_junco
+  username: cctsi
+  password: 0nsl4ught_v3rUC
+  encoding: utf8
+  reconnect: false
+  pool: 5
