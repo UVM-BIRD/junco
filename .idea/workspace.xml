@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="configured for MySQL DB access.  next : generate models&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/journal.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/journal_continuation_map.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/journal_continuation_map_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/journal_continuation_maps.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/journal_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/journals.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/verb.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/verb_test.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/verbs.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files/model_setup.txt" afterPath="$PROJECT_DIR$/files/model_setup.txt" />
+    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="migrations work">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" afterPath="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="junco.iws" />
@@ -80,7 +68,7 @@
     <favorites_list name="junco" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.52620965">
+    <splitter split-orientation="vertical" split-proportion="0.5423387">
       <split-first>
         <leaf>
           <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
@@ -103,21 +91,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="model_setup.txt" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="model_setup.txt" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/files/model_setup.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+                <state vertical-scroll-proportion="0.5412371" vertical-offset="0" max-vertical-offset="195">
                   <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/db/seeds.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -136,8 +124,8 @@
           <file leaf-file-name="20141024184214_create_journal_continuation_maps.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-                  <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+                <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="300">
+                  <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -147,7 +135,7 @@
             <entry file="file://$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-                  <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+                  <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -157,7 +145,7 @@
             <entry file="file://$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                  <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -190,8 +178,8 @@
           <file leaf-file-name="20141024184200_create_journals.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="330">
-                  <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+                <state vertical-scroll-proportion="0.46875" vertical-offset="0" max-vertical-offset="330">
+                  <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
                   <folding />
                 </state>
               </provider>
@@ -216,12 +204,12 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/db/migrate/20141024182845_create_journals.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb" />
         <option value="$PROJECT_DIR$/app/models/verb.rb" />
         <option value="$PROJECT_DIR$/app/models/journal.rb" />
         <option value="$PROJECT_DIR$/files/model_setup.txt" />
+        <option value="$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" />
       </list>
     </option>
   </component>
@@ -734,21 +722,25 @@
       <workItem from="1414079438210" duration="122000" />
       <workItem from="1414160524536" duration="234000" />
       <workItem from="1414160764431" duration="145000" />
-      <workItem from="1414161196110" duration="5254000" />
+      <workItem from="1414161196110" duration="6820000" />
     </task>
     <task id="LOCAL-00001" summary="configured for MySQL DB access.  next : generate models&#10;">
       <created>1414174776616</created>
       <updated>1414174776616</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="migration edits&#10;">
+      <created>1414177861226</created>
+      <updated>1414177861227</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5996000" />
+    <option name="totallyTimeSpent" value="7562000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="89" width="1086" height="680" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -795,7 +787,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="configured for MySQL DB access.  next : generate models&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="configured for MySQL DB access.  next : generate models&#10;" />
+    <MESSAGE value="migration edits&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="migration edits&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -901,30 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/verb.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
@@ -949,18 +918,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/model_setup.txt">
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184229_create_verbs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184200_create_journals.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="300">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/model_setup.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5412371" vertical-offset="0" max-vertical-offset="195">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
