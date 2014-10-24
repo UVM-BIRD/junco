@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  preferred: false
+  nlm_id: MyString
+  abbrv: MyString
+  full: MyString
+  issn_print: MyString
+  issn_online: MyString
+  start_year: 1
+  end_year: 1
+
+two:
+  id: 
+  preferred: false
+  nlm_id: MyString
+  abbrv: MyString
+  full: MyString
+  issn_print: MyString
+  issn_online: MyString
+  start_year: 1
+  end_year: 1

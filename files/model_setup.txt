@@ -1,5 +1,5 @@
-rails generate model journal id:primary_key preferred:boolean nlm_id:string{50} abbrv:string{250} full:string{500} issn_print:string{50} issn_online:string{50} start_year:integer end_year:integer
-
-rails generate model continuation source_journal:references verb:references target_journal:references
+rails generate model journal preferred:boolean nlm_id:string{50} abbrv:string{250} full:string{500} issn_print:string{50} issn_online:string{50} start_year:integer end_year:integer
 
 rails generate model journal_continuation_map source_journal:references verb:references target_journal:references
+
+rails generate model verb desc:string{50}
