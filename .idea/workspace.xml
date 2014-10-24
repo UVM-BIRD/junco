@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="migrations work">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" afterPath="$PROJECT_DIR$/db/migrate/20141024184214_create_journal_continuation_maps.rb" />
+    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="junco.iws" />
@@ -722,7 +721,7 @@
       <workItem from="1414079438210" duration="122000" />
       <workItem from="1414160524536" duration="234000" />
       <workItem from="1414160764431" duration="145000" />
-      <workItem from="1414161196110" duration="6820000" />
+      <workItem from="1414161196110" duration="6848000" />
     </task>
     <task id="LOCAL-00001" summary="configured for MySQL DB access.  next : generate models&#10;">
       <created>1414174776616</created>
@@ -732,11 +731,15 @@
       <created>1414177861226</created>
       <updated>1414177861227</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="migrations working and tables created as desired.">
+      <created>1414178560242</created>
+      <updated>1414178560242</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7562000" />
+    <option name="totallyTimeSpent" value="7590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="89" width="1086" height="680" extended-state="0" />
@@ -788,7 +791,8 @@
     </option>
     <MESSAGE value="configured for MySQL DB access.  next : generate models&#10;" />
     <MESSAGE value="migration edits&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="migration edits&#10;" />
+    <MESSAGE value="migrations working and tables created as desired." />
+    <option name="LAST_COMMIT_MESSAGE" value="migrations working and tables created as desired." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
