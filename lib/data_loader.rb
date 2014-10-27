@@ -1,24 +1,37 @@
 class DataLoader
   def load(filename)
-    headers = nil
+    each_record(filename) do |r|
+      save_record r
+    end
 
-    f = File.new(filename)
-    f.each do |line|
+    each_record(filename) do |r|
+      save_continuation_map r
+    end
+  end
+
+  private
+
+  def each_record(filename)
+    raise 'block required' unless block_given?
+
+    file = File.new(filename)
+
+    headers = nil
+    file.each do |line|
       parts = line.split /\s*\|\s*/
       if headers == nil
-        headers = parts.collect{ |p| p.downcase.to_sym }
+        headers = parts.collect{ |p| p.downcase.strip.to_sym }
 
       else
         record = {}
         for i in 0 ... headers.size do
           record[headers[i]] = parts[i]
         end
-        save_record record
+
+        yield record
       end
     end
   end
-
-  private
 
   def save_record(r)
     pref_nlm_id = r[:preferred_nlmid]
@@ -50,13 +63,16 @@ class DataLoader
                               start_year: r[:variant_start_year],
                               end_year: r[:variant_end_year])
         journal.save!
-
-        save_continuation_map r
       end
     end
 
     def save_continuation_map(r)
       trail = r[:continuation_trail]
+
+      # need to get the LAST instance of (\d+) from the left and right of -verb-> to handle, e.g. :
+      #  Blah journal (2003) (37472817) -Continued by-> Blah blah journal (2) (2014) (47373622)
+      # because this kind of stuff happens
+
       regex = /[^(]+\((\d+)\)\s*-([^-]+)->[^(]+\((\d+)\)/
 
       while true do
@@ -65,14 +81,19 @@ class DataLoader
         break if md == nil
 
         source = Journal.find_by_nlm_id md[1]
-        target = Journal.find_by_nlm_id md[3]
         verb = Verb.find_by_name "is #{md[2].downcase}"
+        target = Journal.find_by_nlm_id md[3]
 
-        map = JournalContinuationMap.new(source_journal: source,
-                                         verb: verb,
-                                         target_journal: target)
+        begin
+          map = JournalContinuationMap.new(source_journal_id: source.id,
+                                           verb_id: verb.id,
+                                           target_journal_id: target.id)
 
-        map.save!
+          map.save!
+
+        rescue Exception => e
+          Rails.logger.error "caught #{e.class.name} processing continuation trail '#{trail}' - #{e.message}"
+        end
 
         trail = trail[(trail.index('->') + 2)..-1].lstrip
       end
