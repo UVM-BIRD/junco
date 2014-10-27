@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20141024184229) do
     t.integer "target_journal_id", null: false
   end
 
-  add_index "journal_continuation_maps", ["source_journal_id", "target_journal_id"], name: "source_target_index", unique: true, using: :btree
   add_index "journal_continuation_maps", ["source_journal_id"], name: "index_journal_continuation_maps_on_source_journal_id", using: :btree
   add_index "journal_continuation_maps", ["target_journal_id"], name: "index_journal_continuation_maps_on_target_journal_id", using: :btree
 
@@ -30,11 +29,13 @@ ActiveRecord::Schema.define(version: 20141024184229) do
     t.string   "full",        limit: 500, null: false
     t.string   "issn_print",  limit: 50
     t.string   "issn_online", limit: 50
-    t.integer  "start_year"
-    t.integer  "end_year"
+    t.string   "start_year",  limit: 4
+    t.string   "end_year",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "journals", ["nlm_id"], name: "index_journals_on_nlm_id", unique: true, using: :btree
 
   create_table "verbs", force: true do |t|
     t.string   "name",       limit: 50,  null: false
