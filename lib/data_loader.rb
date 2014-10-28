@@ -1,11 +1,16 @@
 class DataLoader
   def load(filename)
-    each_record(filename) do |r|
-      save_record r
-    end
+    begin
+      each_record(filename) do |r|
+        save_record r
+      end
 
-    each_record(filename) do |r|
-      save_continuation_map r
+      each_record(filename) do |r|
+        save_continuation_map r
+      end
+
+    rescue Exception => e
+      Rails.logger.error "caught #{e.class.name} processing continuation trail '#{trail}' - #{e.message}"
     end
   end
 
@@ -69,33 +74,48 @@ class DataLoader
     def save_continuation_map(r)
       trail = r[:continuation_trail]
 
+      return if trail.nil?
+
       # need to get the LAST instance of (\d+) from the left and right of -verb-> to handle, e.g. :
       #  Blah journal (2003) (37472817) -Continued by-> Blah blah journal (2) (2014) (47373622)
       # because this kind of stuff happens
 
-      regex = /[^(]+\((\d+)\)\s*-([^-]+)->[^(]+\((\d+)\)/
+      journals = []
+      verbs = []
+      verb_regex = /\s*-([a-zA-Z ]+)->\s*/
+      id_regex = /\(([^)]+)\)\s*$/
+      parts = trail.split verb_regex
 
-      while true do
-        md = regex.match trail
+      for i in 0 ... parts.size do
+        if i % 2 == 0
+          journals << Journal.find_by_nlm_id(parts[i][id_regex, 1])
 
-        break if md == nil
+        else
+          verbs << Verb.find_by_name("is #{parts[i].downcase}")
+        end
+      end
 
-        source = Journal.find_by_nlm_id md[1]
-        verb = Verb.find_by_name "is #{md[2].downcase}"
-        target = Journal.find_by_nlm_id md[3]
+      while journals.size >= 2 && verbs.any? do
+        source_journal = journals.delete_at(0)
+        verb = verbs.delete_at(0)
+        target_journal = journals[0]      # do not delete - this will become the source journal on the next iteration
 
-        begin
-          map = JournalContinuationMap.new(source_journal_id: source.id,
+        map = JournalContinuationMap.find_by source_journal_id: source_journal.id,
+                                             target_journal_id: target_journal.id
+
+        if map.nil?
+          map = JournalContinuationMap.new(source_journal_id: source_journal.id,
                                            verb_id: verb.id,
-                                           target_journal_id: target.id)
-
+                                           target_journal_id: target_journal.id)
           map.save!
 
-        rescue Exception => e
-          Rails.logger.error "caught #{e.class.name} processing continuation trail '#{trail}' - #{e.message}"
+        elsif map.verb.id != verb.id
+          raise "found conflicting verb connecting journal (#{source_journal.nlm_id}) with journal (#{target_journal.nlm_id}) for variant NLM ID #{r[:variant_nlmid]}"
         end
+      end
 
-        trail = trail[(trail.index('->') + 2)..-1].lstrip
+      if journals.size > 1 || verbs.any?
+        raise "found unprocessed journals and / or verbs processing record for variant NLM ID #{r[:variant_nlmid]}"
       end
     end
   end
