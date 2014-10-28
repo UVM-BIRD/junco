@@ -7,6 +7,8 @@
 # Ignore IDEA workspace - it changes all the time
 /.idea/workspace.xml
 
+/data/**
+
 # Ignore bundler config.
 /out/**
 /.bundle

@@ -1,0 +1,13 @@
+%h1 Junco Search
+%form{ id: 'search_form', action: search_search_path, method: 'get' }
+  = text_field_tag 'query', params[:query], placeholder: 'Search'
+
+-if params[:query]
+  - if @journals.any?
+    %table
+      - @journals.each do |j|
+        %tr<
+          %td= link_to j.full, "/journal/#{j.nlm_id}"
+
+  - else
+    %p No journals matched your search.
