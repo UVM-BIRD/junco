@@ -12,4 +12,8 @@ class Journal < ActiveRecord::Base
     end
     @targets
   end
+
+  def url
+    "http://www.ncbi.nlm.nih.gov/nlmcatalog/?term=#{nlm_id}[nlmid]"
+  end
 end

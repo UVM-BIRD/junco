@@ -1,5 +1,5 @@
 %h1= @journal.full
 
-%p= link_to @journal.nlm_id, build_link(@journal.nlm_id)
+%p= link_to @journal.nlm_id, @journal.url
 
 =build_trail @journal
