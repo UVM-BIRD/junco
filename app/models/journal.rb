@@ -1,9 +1,15 @@
 class Journal < ActiveRecord::Base
   def sources
-    JournalContinuationMap.where(target_journal_id: id)
+    if @sources.nil?
+      @sources = JournalContinuationMap.where(target_journal_id: id)
+    end
+    @sources
   end
 
   def targets
-    JournalContinuationMap.where(source_journal_id: id)
+    if @targets.nil?
+      @targets = JournalContinuationMap.where(source_journal_id: id)
+    end
+    @targets
   end
 end
