@@ -14,3 +14,42 @@
  *= require_self
  */
 
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.source, table.target {
+    /*border: 1px solid black;*/
+    width: 100%;
+}
+
+/*td {*/
+    /*border: 1px dotted red;*/
+/*}*/
+
+html {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+td.this {
+    border: 1px solid black;
+    text-align: center;
+}
+
+td.this .label {
+    color: green;
+    font-weight: bold;
+}
+
+td.source {
+    text-align: right;
+}
+
+.verb {
+    font-style: italic;
+}
+
+td.target {
+    text-align: left;
+}

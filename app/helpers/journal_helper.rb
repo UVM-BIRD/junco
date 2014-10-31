@@ -2,7 +2,7 @@ module JournalHelper
   def build_trail(journal)
     trail = '<table><tr>'
     trail += "<td>#{build_source_trail(journal)}</td>\n" if journal.sources.any?
-    trail += "<td class='trailItem'><strong>#{journal.abbrv}</strong></td>\n"
+    trail += "<td class='this trailItem'><span class='label'>#{journal.abbrv}</span></td>\n"
     trail += "<td>#{build_target_trail(journal)}</td>\n" if journal.targets.any?
     trail += '</tr></table>'
     trail.html_safe
@@ -13,11 +13,11 @@ module JournalHelper
   def build_source_trail(journal)
     sources = journal.sources
     if sources.any?
-      trail = '<table>'
+      trail = '<table class=\'source\'>'
       for i in 0 ... sources.size do
         trail += '<tr>'
         trail += "<td>#{build_source_trail(sources[i].source_journal)}</td>"
-        trail += "<td class='trailItem'>#{render_journal(sources[i].source_journal)} <em>-#{sources[i].verb.name}-&gt;</em></td>"
+        trail += "<td class='source trailItem'><span class='label'>#{render_journal(sources[i].source_journal)}</span> <span class='verb'>-#{sources[i].verb.name}-&gt;</verb></td>"
         trail += '</tr>'
       end
       trail + '</table>'
@@ -30,10 +30,10 @@ module JournalHelper
   def build_target_trail(journal)
     targets = journal.targets
     if targets.any?
-      trail = '<table>'
+      trail = '<table class=\'target\'>'
       for i in 0 ... targets.size do
         trail += '<tr>'
-        trail += "<td class='trailItem'><em>-#{targets[i].verb.name}-&gt;</em> #{render_journal(targets[i].target_journal)}</td>"
+        trail += "<td class='target trailItem'><span class='verb'>-#{targets[i].verb.name}-&gt;</span> <span class='label'>#{render_journal(targets[i].target_journal)}</span></td>"
         trail += "<td>#{build_target_trail(targets[i].target_journal)}</td>"
         trail += '</tr>'
       end
