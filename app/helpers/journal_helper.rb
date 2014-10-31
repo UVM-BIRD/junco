@@ -2,7 +2,7 @@ module JournalHelper
   def build_trail(journal)
     trail = '<table><tr>'
     trail += "<td>#{build_source_trail(journal)}</td>\n" if journal.sources.any?
-    trail += "<td class='trailItem'>#{render_journal(journal)}</td>\n"
+    trail += "<td class='trailItem'><strong>#{journal.abbrv}</strong></td>\n"
     trail += "<td>#{build_target_trail(journal)}</td>\n" if journal.targets.any?
     trail += '</tr></table>'
     trail.html_safe
