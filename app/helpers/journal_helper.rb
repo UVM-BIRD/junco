@@ -61,15 +61,14 @@ module JournalHelper
   end
 
   def render_verb(verb)
-    "<span class='verb'>-#{verb.name}-&gt;</span>"
+    "<span class='verb' data-id='#{verb.id}'>-#{verb.name}-&gt;</span>"
   end
 
   def render_journal(journal, current)
     s = '<span'
     s += ' class=\'currentJournal\'' if journal.id == current.id
     s += ">#{link_to(journal.abbrv, "/journal/#{journal.nlm_id}")}</span> "
-    s += "<span>(#{link_to(journal.nlm_id, journal.url, target: '_blank')})</span>"
-    s
+    s + "<span>(#{link_to(journal.nlm_id, journal.url, target: '_blank')})</span>"
   end
 
   def find_current_helper(journal, depth)
