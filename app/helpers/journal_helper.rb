@@ -10,6 +10,20 @@ module JournalHelper
     trail.html_safe
   end
 
+  def find_current(journal)
+    current = nil
+    max_depth = -1
+
+    find_current_helper(journal, 0).each do |hsh|
+      if hsh[:depth] > max_depth
+        max_depth = hsh[:depth]
+        current = hsh[:journal]
+      end
+    end
+
+    current
+  end
+
   private
 
   def build_source_trail(journal, current)
@@ -19,7 +33,7 @@ module JournalHelper
       for i in 0 ... sources.size do
         trail += '<tr><td><table class=\'source\'><tr>'
         trail += "<td>#{build_source_trail(sources[i].source_journal, current)}</td>"
-        trail += "<td class='source'>#{render_journal(sources[i].source_journal, current)} <span class='verb'>-#{sources[i].verb.name}-&gt;</verb></td>"
+        trail += "<td class='source'>#{render_journal(sources[i].source_journal, current)} #{render_verb(sources[i].verb)}</td>"
         trail += '</tr></table></td></tr>'
       end
       trail + '</table>'
@@ -57,22 +71,6 @@ module JournalHelper
     s += "<span>(#{link_to(journal.nlm_id, journal.url, target: '_blank')})</span>"
     s
   end
-
-  def find_current(journal)
-    current = nil
-    max_depth = -1
-
-    find_current_helper(journal, 0).each do |hsh|
-      if hsh[:depth] > max_depth
-        max_depth = hsh[:depth]
-        current = hsh[:journal]
-      end
-    end
-
-    current
-  end
-
-  private
 
   def find_current_helper(journal, depth)
     depth ||= 0

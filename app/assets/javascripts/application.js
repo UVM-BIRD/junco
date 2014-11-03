@@ -14,3 +14,22 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+/////////////////////////////////////////////////////////////////////////////////
+// Hover logic
+//
+
+function hoverOn(element) {
+    $(element).addClass('hover');
+}
+
+function hoverOff(element) {
+    $(element).removeClass('hover');
+}
+
+function enableHover(selector) {
+    $(document).on({
+        mouseover: function() { hoverOn($(this)); },
+        mouseleave: function() { hoverOff($(this)); }
+    }, selector);
+}
