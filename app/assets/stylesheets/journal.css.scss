@@ -1,3 +1,50 @@
 // Place all the styles related to the Journal controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.this {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.source, table.target {
+  width: 100%;
+}
+
+table.invisible {
+  width: 100%;
+  padding: 0;
+  border-spacing: 0;
+}
+
+table.invisible td {
+  padding: 0;
+  border-spacing: 0;
+}
+
+td.this {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+td.this .label {
+  color: green;
+  font-weight: bold;
+}
+
+td.source {
+  width: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.verb {
+  font-style: italic;
+}
+
+td.target {
+  width: 0;
+  text-align: left;
+  white-space: nowrap;
+}

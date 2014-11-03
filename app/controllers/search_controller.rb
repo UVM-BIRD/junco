@@ -1,14 +1,18 @@
 class SearchController < ApplicationController
+  require 'will_paginate/array'
+
   def search
     q = params[:query] == nil ?
         nil :
         params[:query].strip.downcase
 
-    @journals = []
     if q != nil
+      arr = []
       Journal.all.each do |j|
-        @journals << j if matches(j, q)
+        arr << j if matches(j, q)
       end
+
+      @journals = arr.paginate page: params[:page], per_page: 20
 
       respond_to do |format|
         format.html

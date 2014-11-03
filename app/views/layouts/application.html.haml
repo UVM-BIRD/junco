@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title Junco
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    #header
+      #logo Junco
+      #search= render 'search/form'
+
+    #content= yield
+
+    #footer Junco is Copyright &copy; 2014 The University of Vermont.  All Rights Reserved.
