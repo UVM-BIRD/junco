@@ -1,3 +1,21 @@
 // Place all the styles related to the Search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "vars";
+
+#page_nav {
+  border: 1px solid $color1;
+  padding: 3px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+#search_results {
+  width: 100%;
+}
+
+#search_results tr:nth-child(even) {
+  background: $color1;
+}

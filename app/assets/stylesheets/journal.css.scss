@@ -2,35 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table.this {
+#trail {
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
   margin-left: auto;
   margin-right: auto;
 }
 
-table.source, table.target {
-  width: 100%;
+#info td {
+  vertical-align: top;
 }
 
-table.invisible {
+#trail table {
   width: 100%;
+  padding: 0;
+  border-spacing: 3px;
+}
+
+#trail table.invis {
+  border: none;
   padding: 0;
   border-spacing: 0;
 }
 
-table.invisible td {
+#trail td {
   padding: 0;
   border-spacing: 0;
-}
-
-td.this {
-  padding: 10px;
-  border: 1px solid black;
-  text-align: center;
-}
-
-td.this .label {
-  color: green;
-  font-weight: bold;
 }
 
 td.source {
@@ -40,11 +39,24 @@ td.source {
 }
 
 .verb {
+  color: #888888;
   font-style: italic;
 }
 
 td.target {
   width: 0;
   text-align: left;
+  white-space: nowrap;
+}
+
+.queryJournal {
+  color: #ffa500;
+}
+
+.currentJournal {
+  color: #006400;
+}
+
+span {
   white-space: nowrap;
 }

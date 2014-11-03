@@ -1,4 +1,4 @@
-%h2 Junco Search Results
+#title= "Journals matching '#{params[:query]}':"
 
 #page_nav= will_paginate @journals
 
@@ -7,7 +7,7 @@
   %p Please refine your search and try again.
 
 - else
-  %table
+  %table#search_results
     - @journals.each do |j|
       %tr<
         %td= link_to j.full, "/journal/#{j.nlm_id}"

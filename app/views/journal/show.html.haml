@@ -1,5 +1,39 @@
-%h3= @journal.full
+- current = find_current @journal
 
-%p= link_to @journal.nlm_id, @journal.url
+%table#info
+  %tr
+    %td.nowrap Query journal:
+    %td.queryJournal= @journal.full
+    %td= "(#{link_to(@journal.nlm_id, @journal.url)})".html_safe
 
-=build_trail @journal
+  %tr
+    %td.nowrap Current journal name:
+    %td.currentJournal= current.full
+    %td= "(#{link_to(current.nlm_id, current.url)})".html_safe
+
+  %tr
+    %td.nowrap Abbreviation:
+    %td= @journal.abbrv
+    %td
+
+  %tr
+    %td.nowrap Start year:
+    %td= @journal.start_year
+    %td
+
+  %tr
+    %td.nowrap End year:
+    %td= @journal.end_year
+    %td
+
+  %tr
+    %td.nowrap ISSN (Print)
+    %td= @journal.issn_print
+    %td
+
+  %tr
+    %td.nowrap ISSN (Online)
+    %td= @journal.issn_online
+    %td
+
+= build_trail @journal
