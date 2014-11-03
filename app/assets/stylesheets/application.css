@@ -24,6 +24,17 @@ table.source, table.target {
     width: 100%;
 }
 
+table.invisible {
+    width: 100%;
+    padding: 0;
+    border-spacing: 0;
+}
+
+table.invisible td {
+    padding: 0;
+    border-spacing: 0;
+}
+
 /*td {*/
     /*border: 1px dotted red;*/
 /*}*/
@@ -33,6 +44,7 @@ html {
 }
 
 td.this {
+    padding: 10px;
     border: 1px solid black;
     text-align: center;
 }
@@ -43,7 +55,9 @@ td.this .label {
 }
 
 td.source {
+    width: 0;
     text-align: right;
+    white-space: nowrap;
 }
 
 .verb {
@@ -51,5 +65,7 @@ td.source {
 }
 
 td.target {
+    width: 0;
     text-align: left;
+    white-space: nowrap;
 }
