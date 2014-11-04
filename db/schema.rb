@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024184229) do
+ActiveRecord::Schema.define(version: 20141104150703) do
 
   create_table "journal_continuation_maps", id: false, force: true do |t|
     t.integer "source_journal_id", null: false
@@ -36,6 +36,24 @@ ActiveRecord::Schema.define(version: 20141024184229) do
   end
 
   add_index "journals", ["nlm_id"], name: "index_journals_on_nlm_id", unique: true, using: :btree
+
+  create_table "search_terms", force: true do |t|
+    t.string   "term",       limit: 250, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "search_terms", ["term"], name: "index_search_terms_on_term", unique: true, using: :btree
+
+  create_table "term_journal_maps", force: true do |t|
+    t.integer  "term_id",    null: false
+    t.integer  "journal_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "term_journal_maps", ["journal_id"], name: "index_term_journal_maps_on_journal_id", using: :btree
+  add_index "term_journal_maps", ["term_id"], name: "index_term_journal_maps_on_term_id", using: :btree
 
   create_table "verbs", force: true do |t|
     t.string   "name",       limit: 50,  null: false

@@ -1,4 +1,7 @@
 class Journal < ActiveRecord::Base
+  has_many :journal_continuation_maps
+  has_many :term_journal_maps
+
   def sources
     if @sources.nil?
       @sources = JournalContinuationMap.where(target_journal_id: id)
