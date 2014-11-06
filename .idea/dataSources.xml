@@ -5,26 +5,19 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/junco_dev</jdbc-url>
-      <user-name>junco</user-name>
-      <user-password>dfc0dfdfdfc4dfc9dfc5</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails junco: test" uuid="02396d9a-c632-49f0-ace4-d9a32484ce66">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1/junco_test</jdbc-url>
-      <user-name>junco</user-name>
-      <user-password>dfc0dfdfdfc4dfc9dfc5</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails junco: production" uuid="6f6e7522-f30c-428a-9e5b-f9f286267067">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://webdb-large1.uvm.edu/cctsi_junco</jdbc-url>
-      <user-name>cctsi</user-name>
-      <user-password>df9adfc4dfd9dfc6df9edfdfdfcddfc2dfdedff5dfdcdf99dfd8dfffdfe9</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-
