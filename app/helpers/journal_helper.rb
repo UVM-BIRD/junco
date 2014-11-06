@@ -65,7 +65,7 @@ module JournalHelper
     s += "<div class='label'>-#{verb.name}-&gt;</div>"
     s += '<div class=\'verbRef\'>'
     s += "<div class='verbRefName'>#{verb.name}</div>"
-    s += "<div class='verbRefRdawId'>#{verb.rdaw_id}</div>"
+    s += "<div class='verbRefRdawId'>#{link_to(verb.rdaw_id, verb.url, target: '_blank')}</div>"
     s += "<div class='verbRefDesc'>#{verb.desc}</div>"
     s + '</div></div>'
   end
