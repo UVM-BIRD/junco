@@ -68,11 +68,15 @@ td.source {
   border: 1px solid black;
   background-color: $color1;
   font-size: 11px;
+  max-width: 300px;
+  padding: 2px;
 }
 
 .verbRef div {
   display: block;
   text-align: left;
+  max-width: inherit;
+  white-space: normal;
 }
 
 .verbRefName {

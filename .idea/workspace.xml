@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="searches are now fast fast">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+    <list default="true" id="07d332b5-b7f8-411c-a592-9eb352d75eee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/journal_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/journal_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/junco.iml" afterPath="$PROJECT_DIR$/junco.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="junco.iws" />
@@ -147,8 +144,8 @@
           <file leaf-file-name="journal.css.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3163539" vertical-offset="992" max-vertical-offset="1680">
-                  <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+                <state vertical-scroll-proportion="0.43699732" vertical-offset="932" max-vertical-offset="1740">
+                  <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -856,7 +853,13 @@
       <option name="project" value="LOCAL" />
       <updated>1415130421340</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="now displays verb info when hovering over verbs.  could use some additional formatting, but close!">
+      <created>1415294579423</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1415294579423</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -927,7 +930,8 @@
     <MESSAGE value="added hover logic to verbs.  now just need to do something with it" />
     <MESSAGE value="tweak" />
     <MESSAGE value="searches are now fast fast" />
-    <option name="LAST_COMMIT_MESSAGE" value="searches are now fast fast" />
+    <MESSAGE value="now displays verb info when hovering over verbs.  could use some additional formatting, but close!" />
+    <option name="LAST_COMMIT_MESSAGE" value="now displays verb info when hovering over verbs.  could use some additional formatting, but close!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1315,8 +1319,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3163539" vertical-offset="992" max-vertical-offset="1680">
-          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.43699732" vertical-offset="932" max-vertical-offset="1740">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
