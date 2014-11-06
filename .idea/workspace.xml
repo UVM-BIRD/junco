@@ -100,8 +100,8 @@
           <file leaf-file-name="journal_helper.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/helpers/journal_helper.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7754569" vertical-offset="708" max-vertical-offset="1500">
-                  <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.10443864" vertical-offset="845" max-vertical-offset="1500">
+                  <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -144,8 +144,8 @@
           <file leaf-file-name="journal.css.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.43699732" vertical-offset="932" max-vertical-offset="1740">
-                  <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.55764073" vertical-offset="992" max-vertical-offset="1755">
+                  <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -228,8 +228,8 @@
       <list>
         <option value="$PROJECT_DIR$/app/assets/javascripts/journal.js" />
         <option value="$PROJECT_DIR$/app/views/journal/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/helpers/journal_helper.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss" />
+        <option value="$PROJECT_DIR$/app/helpers/journal_helper.rb" />
       </list>
     </option>
   </component>
@@ -859,7 +859,13 @@
       <option name="project" value="LOCAL" />
       <updated>1415294579423</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="display tweaks">
+      <created>1415295219335</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1415295219335</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -924,14 +930,14 @@
     <MESSAGE value="schema tweaks : year values are now 4-character strings.  to accommodate 'uuuu' and '19uu' type years." />
     <MESSAGE value="bug fixes" />
     <MESSAGE value="now loading data into the database as desired" />
-    <MESSAGE value="display tweaks" />
     <MESSAGE value="now paginating search results" />
     <MESSAGE value="display updates.  also added home controller for displaying a home page (not much there ATM).  now need caching and a more graceful way to populate the database, and that should do it I think" />
     <MESSAGE value="added hover logic to verbs.  now just need to do something with it" />
     <MESSAGE value="tweak" />
     <MESSAGE value="searches are now fast fast" />
     <MESSAGE value="now displays verb info when hovering over verbs.  could use some additional formatting, but close!" />
-    <option name="LAST_COMMIT_MESSAGE" value="now displays verb info when hovering over verbs.  could use some additional formatting, but close!" />
+    <MESSAGE value="display tweaks" />
+    <option name="LAST_COMMIT_MESSAGE" value="display tweaks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1309,18 +1315,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/journal_helper.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7754569" vertical-offset="708" max-vertical-offset="1500">
-          <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.55764073" vertical-offset="992" max-vertical-offset="1755">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/journal.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/helpers/journal_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43699732" vertical-offset="932" max-vertical-offset="1740">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.10443864" vertical-offset="845" max-vertical-offset="1500">
+          <caret line="59" column="7" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
           <folding />
         </state>
       </provider>

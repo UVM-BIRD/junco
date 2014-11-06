@@ -73,22 +73,23 @@ td.source {
 }
 
 .verbRef div {
-  display: block;
   text-align: left;
   max-width: inherit;
   white-space: normal;
+  clear: right;
 }
 
 .verbRefName {
   font-weight: bold;
+  float: left;
+}
+
+.verbRefRdawId {
+  float: right;
 }
 
 .verbRefDesc {
   font-style: italic;
-}
-
-.verbRefRdawId {
-  display: block;
 }
 
 td.target {
