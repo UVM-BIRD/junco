@@ -1,2 +1,4 @@
-%h1 Admin#refresh
-%p Find me in app/views/admin/refresh.html.haml
+= form_tag action: 'refresh', multipart: true
+  = password_field_tag :auth, :pass
+  = file_field_tag 'Select file:', :file
+  = submit_tag 'Upload'
