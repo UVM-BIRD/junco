@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20141104150703) do
 
   add_index "search_terms", ["term"], name: "index_search_terms_on_term", unique: true, using: :btree
 
-  create_table "term_journal_maps", force: true do |t|
+  create_table "term_journal_maps", id: false, force: true do |t|
     t.integer  "term_id",    null: false
     t.integer  "journal_id", null: false
     t.datetime "created_at"

@@ -11,6 +11,9 @@
       #logo Junco
       #search= render 'search/form'
 
-    #content= yield
+    #content
+      - if flash[:alert]
+        #alert= flash[:alert]
+      = yield
 
     #footer Junco is Copyright &copy; 2014 The University of Vermont.  All Rights Reserved.

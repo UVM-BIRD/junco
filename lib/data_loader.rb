@@ -1,9 +1,13 @@
 class DataLoader
   def load(filename)
     begin
+      TermJournalMap.delete_all
+
       each_record(filename) do |r|
         save_record r
       end
+
+      JournalContinuationMap.delete_all
 
       each_record(filename) do |r|
         save_continuation_map r
@@ -19,21 +23,21 @@ class DataLoader
   def each_record(filename)
     raise 'block required' unless block_given?
 
-    file = File.new(filename)
+    File.open(filename) do |file|
+      headers = nil
+      file.each do |line|
+        parts = line.split /\s*\|\s*/
+        if headers == nil
+          headers = parts.collect{ |p| p.downcase.strip.to_sym }
 
-    headers = nil
-    file.each do |line|
-      parts = line.split /\s*\|\s*/
-      if headers == nil
-        headers = parts.collect{ |p| p.downcase.strip.to_sym }
+        else
+          record = {}
+          for i in 0 ... headers.size do
+            record[headers[i]] = parts[i]
+          end
 
-      else
-        record = {}
-        for i in 0 ... headers.size do
-          record[headers[i]] = parts[i]
+          yield record
         end
-
-        yield record
       end
     end
   end
@@ -53,8 +57,13 @@ class DataLoader
                               issn_online: r[:preferred_issn_online],
                               start_year: r[:variant_start_year],
                               end_year: r[:variant_end_year])
-        journal.save!
-        save_search_terms journal
+      else
+        journal.update(abbrv: r[:preferred_abbrv],
+                       full: r[:preferred_full],
+                       issn_print: r[:preferred_issn_print],
+                       issn_online: r[:preferred_issn_online],
+                       start_year: r[:variant_start_year],
+                       end_year: r[:variant_end_year])
       end
 
     else
@@ -68,10 +77,19 @@ class DataLoader
                               issn_online: r[:variant_issn_online],
                               start_year: r[:variant_start_year],
                               end_year: r[:variant_end_year])
-        journal.save!
-        save_search_terms journal
+
+      else
+        journal.update(abbrv: r[:variant_abbrv],
+                       full: r[:variant_full],
+                       issn_print: r[:variant_issn_print],
+                       issn_online: r[:variant_issn_online],
+                       start_year: r[:variant_start_year],
+                       end_year: r[:variant_end_year])
       end
     end
+
+    journal.save!
+    save_search_terms journal
   end
 
   def save_search_terms(j)
