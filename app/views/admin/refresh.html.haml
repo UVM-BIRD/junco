@@ -3,10 +3,10 @@ Use this form to refresh Junco data.
 = form_tag({ action: 'refresh' }, multipart: true) do
   %table
     %tr
+      %td Reconciled Journal List:
+      %td= file_field_tag 'file'
+    %tr
       %td Password:
       %td= password_field_tag 'password'
-    %tr
-      %td Data file:
-      %td= file_field_tag 'file'
     %tr
       %td{colspan: 2}= submit_tag 'Upload'

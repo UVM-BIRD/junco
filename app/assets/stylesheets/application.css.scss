@@ -75,8 +75,21 @@ a.plain:hover {
 
 #alert {
   color: #ff0000;
+  margin-bottom: 2px;
+  width: 100%;
 }
 
 #notice {
   color: #00ff00;
+  margin-bottom: 2px;
+  width: 100%;
+}
+
+#error {
+  color: #000000;
+  background-color: #ff8888;
+  border: 1px solid black;
+  padding: 2px;
+  margin-bottom: 2px;
+  width: 100%;
 }

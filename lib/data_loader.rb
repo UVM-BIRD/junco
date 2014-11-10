@@ -1,25 +1,40 @@
+require 'date'
+
 class DataLoader
   include Singleton
 
   def initialize
     @running = false
+    @error = nil
   end
 
-  def load(filename)
+  def error
+    @error
+  end
+
+  def load(file)
     if @running
       raise 'System is busy refreshing data.  Please wait.'
 
     else
-      @running = true
       Rails.logger.info '--- BEGINNING SYSTEM REFRESH ---'
 
+      @running = true
+      @error = nil
+
       Thread.new do
+        start = DateTime.now.to_s
+
         begin
-          do_load filename
+          do_load file.path
+
+        rescue Exception => e
+          Rails.logger.error "caught #{e.class.name} processing file '#{file.path}' - #{e.message}"
+          @error = "Error processing '#{file.original_filename}' during refresh started #{start} : #{e.message}"
 
         ensure
-          @running = false
           Rails.logger.info '--- SYSTEM REFRESH COMPLETED ---'
+          @running = false
         end
       end
     end
@@ -28,27 +43,22 @@ class DataLoader
   private
 
   def do_load(filename)
-    begin
-      File.open(filename) do |file|
-        Rails.logger.info 'refreshing journals and search terms -'
+    File.open(filename) do |file|
+      Rails.logger.info 'refreshing journals and search terms -'
 
-        TermJournalMap.delete_all
+      TermJournalMap.delete_all
 
-        each_record(file) do |r|
-          save_record r
-        end
-
-        Rails.logger.info 'refreshing journal continuation mappings -'
-
-        JournalContinuationMap.delete_all
-
-        each_record(file) do |r|
-          save_continuation_map r
-        end
+      each_record(file) do |r|
+        save_record r
       end
 
-    rescue Exception => e
-      Rails.logger.error "caught #{e.class.name} processing file '#{filename}' - #{e.message}"
+      Rails.logger.info 'refreshing journal continuation mappings -'
+
+      JournalContinuationMap.delete_all
+
+      each_record(file) do |r|
+        save_continuation_map r
+      end
     end
   end
 
@@ -62,6 +72,7 @@ class DataLoader
       parts = line.split /\s*\|\s*/
       if headers == nil
         headers = parts.collect{ |p| p.downcase.strip.to_sym }
+        validate_headers headers
 
       else
         record = {}
@@ -72,6 +83,16 @@ class DataLoader
         yield record
       end
     end
+  end
+
+  def validate_headers(headers)
+    raise 'headers cannot be nil' if headers.nil?
+
+    required = [ :preferred_abbrv, :preferred_full, :preferred_nlmid, :preferred_issn_print, :preferred_issn_online,
+                 :variant_abbrv, :variant_full, :variant_nlmid, :variant_issn_print, :variant_issn_online,
+                 :variant_start_year, :variant_end_year, :continuation_trail ]
+
+    raise 'one or more required fields is missing' if (required - headers).any?
   end
 
   def save_record(r)
