@@ -65,6 +65,10 @@ a:hover {
   background-color: inherit;
 }
 
+a.plain:hover {
+  text-decoration: none;
+}
+
 .nowrap {
   white-space: nowrap;
 }
