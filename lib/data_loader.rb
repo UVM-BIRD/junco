@@ -29,20 +29,22 @@ class DataLoader
 
   def do_load(filename)
     begin
-      Rails.logger.info 'refreshing journals and search terms -'
+      File.open(filename) do |file|
+        Rails.logger.info 'refreshing journals and search terms -'
 
-      TermJournalMap.delete_all
+        TermJournalMap.delete_all
 
-      each_record(filename) do |r|
-        save_record r
-      end
+        each_record(file) do |r|
+          save_record r
+        end
 
-      Rails.logger.info 'refreshing journal continuation mappings -'
+        Rails.logger.info 'refreshing journal continuation mappings -'
 
-      JournalContinuationMap.delete_all
+        JournalContinuationMap.delete_all
 
-      each_record(filename) do |r|
-        save_continuation_map r
+        each_record(file) do |r|
+          save_continuation_map r
+        end
       end
 
     rescue Exception => e
@@ -50,24 +52,24 @@ class DataLoader
     end
   end
 
-  def each_record(filename)
+  def each_record(file)
     raise 'block required' unless block_given?
 
-    File.open(filename) do |file|
-      headers = nil
-      file.each do |line|
-        parts = line.split /\s*\|\s*/
-        if headers == nil
-          headers = parts.collect{ |p| p.downcase.strip.to_sym }
+    file.rewind
 
-        else
-          record = {}
-          for i in 0 ... headers.size do
-            record[headers[i]] = parts[i]
-          end
+    headers = nil
+    file.each do |line|
+      parts = line.split /\s*\|\s*/
+      if headers == nil
+        headers = parts.collect{ |p| p.downcase.strip.to_sym }
 
-          yield record
+      else
+        record = {}
+        for i in 0 ... headers.size do
+          record[headers[i]] = parts[i]
         end
+
+        yield record
       end
     end
   end
