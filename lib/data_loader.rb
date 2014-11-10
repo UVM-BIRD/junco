@@ -1,21 +1,25 @@
 class DataLoader
-  private_class_method :new
+  include Singleton
 
-  @@running = false
+  def initialize
+    @running = false
+  end
 
-  def self.load(filename)
-    if @@running
+  def load(filename)
+    if @running
       raise 'System is busy refreshing data.  Please wait.'
 
     else
-      @@running = true
+      @running = true
+      Rails.logger.info '--- BEGINNING SYSTEM REFRESH ---'
 
       Thread.new do
         begin
-          DataLoader.new.do_load filename
+          do_load filename
 
         ensure
-          @@running = false
+          @running = false
+          Rails.logger.info '--- SYSTEM REFRESH COMPLETED ---'
         end
       end
     end
@@ -23,16 +27,17 @@ class DataLoader
 
   private
 
-  def initialize
-  end
-
   def do_load(filename)
     begin
+      Rails.logger.info 'refreshing journals and search terms -'
+
       TermJournalMap.delete_all
 
       each_record(filename) do |r|
         save_record r
       end
+
+      Rails.logger.info 'refreshing journal continuation mappings -'
 
       JournalContinuationMap.delete_all
 
@@ -83,7 +88,8 @@ class DataLoader
                               start_year: r[:variant_start_year],
                               end_year: r[:variant_end_year])
       else
-        journal.update(abbrv: r[:preferred_abbrv],
+        journal.update(preferred: true,
+                       abbrv: r[:preferred_abbrv],
                        full: r[:preferred_full],
                        issn_print: r[:preferred_issn_print],
                        issn_online: r[:preferred_issn_online],
@@ -104,7 +110,8 @@ class DataLoader
                               end_year: r[:variant_end_year])
 
       else
-        journal.update(abbrv: r[:variant_abbrv],
+        journal.update(preferred: false,
+                       abbrv: r[:variant_abbrv],
                        full: r[:variant_full],
                        issn_print: r[:variant_issn_print],
                        issn_online: r[:variant_issn_online],
@@ -113,7 +120,12 @@ class DataLoader
       end
     end
 
-    journal.save!
+    if journal.changed?
+      Rails.logger.info "#{journal.id.nil? ? 'creating' : 'updating'} #{journal.preferred? ? 'preferred' : 'variant'} journal with NLM ID '#{pref_nlm_id}'"
+
+      journal.save!
+    end
+
     save_search_terms journal
   end
 

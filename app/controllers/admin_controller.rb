@@ -1,9 +1,11 @@
 class AdminController < ApplicationController
+  PASSWORD = '0rang3_w4lrUS'
+
   def refresh
     if params['password'] == 'pass123'
       if params['file'] && params['file'] != ''
         begin
-          DataLoader.load params['file'].path
+          DataLoader.instance.load params['file'].path
           flash.now[:notice] = 'Refresh started.'
 
         rescue Exception => e
