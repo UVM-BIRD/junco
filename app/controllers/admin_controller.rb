@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   PASSWORD = '0rang3_w4lrUS'
 
   def refresh
-    if params['password'] == 'pass123'
+    if params['password'] == PASSWORD
       if params['file'] && params['file'] != ''
         begin
           DataLoader.instance.load params['file'].path
