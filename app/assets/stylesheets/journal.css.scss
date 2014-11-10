@@ -4,10 +4,17 @@
 
 @import 'vars';
 
-#trail {
-  border: 1px solid black;
+#trail_wrapper {
   margin-top: 20px;
-  margin-bottom: 20px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  border: 1px solid black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#trail {
+  margin: 20px;
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
