@@ -12,8 +12,12 @@
       #search= render 'search/form'
 
     #content
+      - if flash[:notice]
+        #notice= flash[:notice]
+
       - if flash[:alert]
         #alert= flash[:alert]
+
       = yield
 
     #footer Junco is Copyright &copy; 2014 The University of Vermont.  All Rights Reserved.

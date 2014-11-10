@@ -1,5 +1,32 @@
 class DataLoader
-  def load(filename)
+  private_class_method :new
+
+  @@running = false
+
+  def self.load(filename)
+    if @@running
+      raise 'System is busy refreshing data.  Please wait.'
+
+    else
+      @@running = true
+
+      Thread.new do
+        begin
+          DataLoader.new.do_load filename
+
+        ensure
+          @@running = false
+        end
+      end
+    end
+  end
+
+  private
+
+  def initialize
+  end
+
+  def do_load(filename)
     begin
       TermJournalMap.delete_all
 
@@ -17,8 +44,6 @@ class DataLoader
       Rails.logger.error "caught #{e.class.name} processing file '#{filename}' - #{e.message}"
     end
   end
-
-  private
 
   def each_record(filename)
     raise 'block required' unless block_given?
