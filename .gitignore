@@ -7,6 +7,7 @@
 # Ignore IDEA workspace - it changes all the time
 /.idea/workspace.xml
 
+/config/database-actual.yml
 /config/database.yml
 
 /data/**
