@@ -10,6 +10,8 @@
 /config/database-actual.yml
 /config/database.yml
 
+junco.war
+
 /data/**
 
 # Ignore bundler config.

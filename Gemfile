@@ -24,7 +24,14 @@ gem 'sdoc', '~> 0.4.0',                              group: :doc
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'warbler'
+  # gem 'highline'
+end
 
 gem 'haml-rails'
 gem 'will_paginate'

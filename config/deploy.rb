@@ -1,8 +1,9 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'junco'
+set :repo_url, 'git@github.com:UVM-BIRD/junco.git'
+set :deploy_to, '/home/rails/junco'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -23,19 +24,43 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 2
+
+# tomcat settings
+
+
+# useful for debugging!
+namespace :env do
+  task :echo do
+    run 'echo printing out cap info on remote server'
+    run 'printenv'
+  end
+end
+
+namespace :war do
+  desc 'build the war'
+  task :build do
+    run "cd #{latest_release}; warble"
+  end
+
+  desc 'deploy to tomcat'
+  task :deploy do
+    run "cp #{latest_release}/#{application}.war #{tomcat_home}/webapps/"
+
+    # install war to tomcat webapps/ dir
+  end
+end
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -54,5 +79,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
