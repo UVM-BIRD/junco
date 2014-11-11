@@ -29,9 +29,10 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  gem 'warbler'
+  gem 'sshkit'
   # gem 'highline'
 end
 
+gem 'warbler'
 gem 'haml-rails'
 gem 'will_paginate'

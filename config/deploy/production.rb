@@ -15,7 +15,7 @@ role :db,  %w{mstorer@ccts1.uvm.edu}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'ccts1.uvm.edu', user: 'mstorer', roles: %w{web app}, my_property: :my_value
+#server 'ccts1.uvm.edu', user: 'mstorer', roles: %w{web app}, my_property: :my_value
 
 # http://capistranorb.com/documentation/faq/how-can-i-get-capistrano-to-prompt-for-a-password/
 #set :password, ask('Server password:', nil)

@@ -46,21 +46,29 @@ namespace :env do
   end
 end
 
-namespace :war do
-  desc 'build the war'
-  task :build do
-    run "cd #{latest_release}; warble"
-  end
-
-  desc 'deploy to tomcat'
-  task :deploy do
-    run "cp #{latest_release}/#{application}.war #{tomcat_home}/webapps/"
-
-    # install war to tomcat webapps/ dir
-  end
-end
-
 namespace :deploy do
+  desc 'Build WAR'
+  task :build_war do
+    on roles(:app) do
+      within release_path do
+        with rails_env: :production do
+          execute 'warble'
+        end
+      end
+    end
+  end
+
+  desc 'Deploy WAR'
+  task :deploy_war do
+    on roles(:app) do
+      within release_path do
+        with rails_env: :production do
+          execute 'cp junco.war /usr/share/tomcat6/webapps/'
+        end
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -68,6 +76,9 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     end
   end
+
+  after :updated, :build_war
+  after :build_war, :deploy_war
 
   after :publishing, :restart
 
