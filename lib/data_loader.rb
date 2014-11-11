@@ -46,9 +46,11 @@ class DataLoader
     File.open(filename) do |file|
       Rails.logger.info 'refreshing journals and search terms -'
 
+      headers = build_headers file
+
       TermJournalMap.delete_all
 
-      each_record(file) do |r|
+      each_record(headers, file) do |r|
         save_record r
       end
 
@@ -56,26 +58,25 @@ class DataLoader
 
       JournalContinuationMap.delete_all
 
-      each_record(file) do |r|
+      each_record(headers, file) do |r|
         save_continuation_map r
       end
     end
   end
 
-  def each_record(file)
+  def each_record(headers, file)
     raise 'block required' unless block_given?
 
     file.rewind
 
-    headers = nil
+    header_line = nil
     file.each do |line|
-      parts = line.split /\s*\|\s*/
-      if headers == nil
-        headers = parts.collect{ |p| p.downcase.strip.to_sym }
-        validate_headers headers
+      if header_line == nil   # skip the header line
+        header_line = line
 
       else
         record = {}
+        parts = build_parts line
         for i in 0 ... headers.size do
           record[headers[i]] = parts[i]
         end
@@ -85,7 +86,12 @@ class DataLoader
     end
   end
 
-  def validate_headers(headers)
+  def build_headers(file)
+    file.rewind
+
+    parts = build_parts file.readline
+    headers = parts.collect{ |p| p.downcase.strip.to_sym }
+
     raise 'headers cannot be nil' if headers.nil?
 
     required = [ :preferred_abbrv, :preferred_full, :preferred_nlmid, :preferred_issn_print, :preferred_issn_online,
@@ -93,6 +99,12 @@ class DataLoader
                  :variant_start_year, :variant_end_year, :continuation_trail ]
 
     raise 'one or more required fields is missing' if (required - headers).any?
+
+    headers
+  end
+
+  def build_parts(line)
+    line.split /\s*\|\s*/
   end
 
   def save_record(r)
