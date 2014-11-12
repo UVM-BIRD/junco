@@ -154,6 +154,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-jdbc-adapter
   activerecord-jdbcmysql-adapter
+  bundler
   capistrano
   capistrano-bundler
   capistrano-rails
