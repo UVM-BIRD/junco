@@ -2,8 +2,8 @@
 lock '3.2.1'
 
 set :application, 'junco'
-set :repo_url, 'git@github.com:UVM-BIRD/junco.git'
-set :deploy_to, '/home/rails/junco'
+set :repo_url, "git@github.com:UVM-BIRD/#{fetch :application}.git"
+set :deploy_to, "/home/rails/#{fetch :application}"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -52,7 +52,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         with rails_env: :production do
-          execute 'warble'
+          execute :bundle, :exec, :warble
         end
       end
     end
@@ -63,7 +63,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         with rails_env: :production do
-          execute 'cp junco.war /usr/share/tomcat6/webapps/'
+          execute :cp, "#{fetch :application}.war", '/usr/share/tomcat6/webapps/'
         end
       end
     end
