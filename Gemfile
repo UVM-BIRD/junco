@@ -33,7 +33,6 @@ group :development do
   # gem 'highline'
 end
 
-gem 'bundler'
 gem 'warbler'
 gem 'haml-rails'
 gem 'will_paginate'
