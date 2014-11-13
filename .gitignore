@@ -12,6 +12,8 @@
 
 junco.war
 
+/vendor/cache
+
 /data/**
 
 # Ignore bundler config.
