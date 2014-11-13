@@ -71,7 +71,7 @@ namespace :deploy do
 
   desc 'Seed the database'
   task :db_seed do
-    on roles(app) do
+    on roles(:app) do
       within release_path do
         with rails_env: :production do
           execute :bundle, :exec, :rake, 'db:seed'
