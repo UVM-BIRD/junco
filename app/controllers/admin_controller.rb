@@ -20,6 +20,9 @@ class AdminController < ApplicationController
 
     elsif params['password'] && params['password'] != ''
       flash.now[:alert] = 'Invalid password.'
+
+    elsif data_loader.is_running?
+      flash.now[:notice] = 'Refresh in progress.'
     end
 
     flash.now[:error] = data_loader.error if data_loader.error != nil

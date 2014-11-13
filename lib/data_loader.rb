@@ -12,6 +12,10 @@ class DataLoader
     @error
   end
 
+  def is_running?
+    @running
+  end
+
   def load(file)
     if @running
       raise 'System is busy refreshing data.  Please wait.'
