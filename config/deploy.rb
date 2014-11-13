@@ -69,6 +69,17 @@ namespace :deploy do
     end
   end
 
+  desc 'Seed the database'
+  task :db_seed do
+    on roles(app) do
+      within release_path do
+        with rails_env: :production do
+          execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -77,6 +88,7 @@ namespace :deploy do
     end
   end
 
+  after :updated, :db_seed
   after :updated, :build_war
   after :build_war, :deploy_war
 

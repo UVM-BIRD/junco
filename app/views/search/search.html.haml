@@ -10,4 +10,4 @@
   %table#search_results
     - @journals.each do |j|
       %tr<
-        %td= link_to j.full, "/journal/#{j.nlm_id}"
+        %td= link_to j.full, controller: 'journal', action: 'show', nlm_id: j.nlm_id

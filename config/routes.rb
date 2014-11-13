@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'search/search'
-  match 'journal/:nlm_id' => 'journal#show', :via => :get
+  get 'journal/:nlm_id', to: 'journal#show', as: :journal
   get 'admin/refresh'
   post 'admin/refresh'
 

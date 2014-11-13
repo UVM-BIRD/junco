@@ -6,25 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Verb.create(
+Verb.first_or_create(
     name: 'is absorbed by',
     rdaw_id: 'P10145',
     desc: 'Relates a work to a work that incorporates another work.'
 )
 
-Verb.create(
+Verb.first_or_create(
     name: 'is absorbed in part by',
     rdaw_id: 'P10146',
     desc: 'Relates a work to a work that incorporates part of the content of another work.'
 )
 
-Verb.create(
+Verb.first_or_create(
     name: 'is continued by',
     rdaw_id: 'P10191',
     desc: 'Relates a work to a work whose content continues an earlier work.'
 )
 
-Verb.create(
+Verb.first_or_create(
     name: 'is continued in part by',
     rdaw_id: 'P10104',
     desc: 'Relates a work to a work part of whose content separated from an earlier work to form a new work.'
