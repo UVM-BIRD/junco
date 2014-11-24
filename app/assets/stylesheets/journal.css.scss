@@ -41,6 +41,12 @@
   border-spacing: 0;
 }
 
+td.query {
+  width: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
 td.source {
   width: 0;
   text-align: right;

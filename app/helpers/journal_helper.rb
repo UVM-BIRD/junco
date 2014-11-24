@@ -4,7 +4,7 @@ module JournalHelper
 
     trail = '<table id=\'trail\'><tr>'
     trail += "<td>#{build_source_trail(journal, current)}</td>\n" if journal.sources.any?
-    trail += "<td><span class='queryJournal'>#{journal.abbrv}</span></td>\n"
+    trail += "<td class='query'>#{render_query_journal(journal)}</td>\n"
     trail += "<td>#{build_target_trail(journal, current)}</td>\n" if journal.targets.any?
     trail += '</tr></table>'
     trail.html_safe
@@ -73,7 +73,12 @@ module JournalHelper
   def render_journal(journal, current)
     s = '<span'
     s += ' class=\'currentJournal\'' if journal.id == current.id
-    s += ">#{link_to(journal.abbrv, "/journal/#{journal.nlm_id}")}</span> "
+    s += ">#{link_to(journal.abbrv, controller: 'journal', action: 'show', nlm_id: journal.nlm_id)}</span> "
+    s + "<span>(#{link_to(journal.nlm_id, journal.url, target: '_blank')})</span>"
+  end
+
+  def render_query_journal(journal)
+    s = "<span class='queryJournal'>#{journal.abbrv}</span> "
     s + "<span>(#{link_to(journal.nlm_id, journal.url, target: '_blank')})</span>"
   end
 

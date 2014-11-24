@@ -4,12 +4,12 @@
   %tr
     %td.nowrap Query journal:
     %td.queryJournal= @journal.full
-    %td= "(#{link_to(@journal.nlm_id, @journal.url)})".html_safe
+    %td= "(#{link_to(@journal.nlm_id, @journal.url, target: '_blank')})".html_safe
 
   %tr
     %td.nowrap Current journal name:
     %td.currentJournal= current.full
-    %td= "(#{link_to(current.nlm_id, current.url)})".html_safe
+    %td= "(#{link_to(current.nlm_id, current.url, target: '_blank')})".html_safe
 
   %tr
     %td.nowrap Abbreviation:
